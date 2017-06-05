@@ -1,0 +1,94 @@
+Valores iniciales:
+n:	16	[Tamaño de la red]
+b:	10	[Tamaño de la Base de datos]
+c:	2	[Tamaño del caché]
+d:	2
+---
+Calculos iniciales
+DHT: 	5
+x:	1, 2	[Valores de x, 2^x<n]
+Distancias: 	4, 8
+---
+Inicializando la red:
+ID 		Vecino	DHT			BD													CACHE
+0		1		4, 8, 12	0, 1, 2, 3, 4, 5, 6, 7, 8, 9 						--
+1		2		5, 9, 13	10, 11, 12, 13, 14, 15, 16, 17, 18, 19				--
+2		3		6, 10, 14	20, 21, 22, 23, 24, 25, 26, 27, 28, 29				--
+3		4		7, 11, 15	30, 31, 32, 33, 34, 35, 36, 37, 38, 39				--
+4		5		8, 12, 0	40, 41, 42, 43, 44, 45, 46, 47, 48, 49				--
+5		6		9, 13, 1	50, 51, 52, 53, 54, 55, 56, 57, 58, 59				--
+6		7		10, 14, 2	60, 61, 62, 63, 64, 65, 66, 67, 68, 69				--
+7		8		11, 15, 3	70, 71, 72, 73, 74, 75, 76, 77, 78, 79				--
+8		9		12, 0, 4	80, 81, 82, 83, 84, 85, 86, 87, 88, 89				--
+9		10		13, 1, 5	90, 91, 92, 93, 94, 95, 96, 97, 98, 99				--
+10		11		14, 2, 6	100, 101, 102, 103, 104, 105, 106, 107, 108, 109	--
+11		12		15, 3, 7	110, 111, 112, 113, 114, 115, 116, 117, 118, 119	--
+12		13		0, 4, 8		120, 121, 122, 123, 124, 125, 126, 127, 128, 129	--
+13		14		1, 5, 9		130, 131, 132, 133, 134, 135, 136, 137, 138, 139	--
+14		15		2, 6, 10	140, 141, 142, 143, 144, 145, 146, 147, 148, 149	--
+15		0		3, 7, 11	150, 151, 152, 153, 154, 155, 156, 157, 158, 159	--
+---
+
+Nodo inicial: 13
+[13,11,115] Nodo 13 consultará a nodo 11 por 115:
+	[13,11,115] Nodo 13 no tiene consulta 115 en caché
+	[13,11,115] Nodo 13 calcula distancias con 14, 1, 5, 9
+	[13,11,115] Nodo 13 envía consulta a nodo 9
+	[13,11,115] Nodo 9 no tiene consulta 115 en caché
+	[13,11,115] Nodo 9 calcula distancias con 10, 13, 1, 5
+	[13,11,115] Nodo 9 envía consulta a nodo 10
+	[13,11,115] Nodo 10 no tiene consulta 115 en caché
+	[13,11,115] Nodo 10 calcula distancias con 11, 14, 2, 6
+	[13,11,115] Nodo 10 envía consulta a nodo 11
+	[13,11,115] Nodo 11 tiene respuesta a la consulta 115
+	[13,11,115] Nodo 11 envía respuesta a nodo 10
+	[13,11,115] Nodo 10 guarda respuesta en caché
+	[13,11,115] Nodo 10 envía respuesta a nodo 9
+	[13,11,115] Nodo 9 guarda respuesta en caché
+	[13,11,115] Nodo 9 envía respuesta a nodo 13
+	[13,11,115] Nodo 13 guarda respuesta en caché
+	[13,11,115] Nodo 13 recibió respuesta
+[14,2,21] Nodo 14 consultará a nodo 2 por 21:
+	[14,2,21] Nodo 14 no tiene consulta 21 en caché
+	[14,2,21] Nodo 14 calcula distancias con 15, 2, 6,10
+	[14,2,21] Nodo 14 envía consulta a nodo 2
+	[14,2,21] Nodo 2 tiene respuesta a consulta 21
+	[14,2,21] Nodo 2 envía respuesta a nodo 14
+	[14,2,21] Nodo 14 guarda respuesta en caché
+	[14,2,21] Nodo 14 recibió respuesta
+[8,11,115] Nodo 8 consultará a nodo 11 por 115:
+	[8,11,115] Nodo 8 calcula distancias entre 9, 12, 0, 4
+	[8,11,115] Nodo 8 envía consulta a nodo 9
+	[8,11,115] Nodo 9 si tiene consulta en 115 caché.
+	[8,11,115] Nodo 9 envía respuesta a nodo 8
+	[8,11,115] Nodo 8 guarda respuesta en caché
+	[8,11,115] Nodo 8 recibió respuesta
+
+OBSERVER:
+Tamaño red: 15
+ID 		Vecino	DHT			BD													CACHE
+0		1		4, 8, 12	0, 1, 2, 3, 4, 5, 6, 7, 8, 9 						[][]
+1		2		5, 9, 13	10, 11, 12, 13, 14, 15, 16, 17, 18, 19				[][]
+2		3		6, 10, 14	20, 21, 22, 23, 24, 25, 26, 27, 28, 29				[][]
+3		4		7, 11, 15	30, 31, 32, 33, 34, 35, 36, 37, 38, 39				[][]
+4		5		8, 12, 0	40, 41, 42, 43, 44, 45, 46, 47, 48, 49				[][]
+5		6		9, 13, 1	50, 51, 52, 53, 54, 55, 56, 57, 58, 59				[][]
+6		7		10, 14, 2	60, 61, 62, 63, 64, 65, 66, 67, 68, 69				[][]
+7		8		11, 15, 3	70, 71, 72, 73, 74, 75, 76, 77, 78, 79				[][]
+8		9		12, 0, 4	80, 81, 82, 83, 84, 85, 86, 87, 88, 89				[11,115][]
+9		10		13, 1, 5	90, 91, 92, 93, 94, 95, 96, 97, 98, 99				[11,115][]
+10		11		14, 2, 6	100, 101, 102, 103, 104, 105, 106, 107, 108, 109	[11,115][]
+11		12		15, 3, 7	110, 111, 112, 113, 114, 115, 116, 117, 118, 119	[][]
+12		13		0, 4, 8		120, 121, 122, 123, 124, 125, 126, 127, 128, 129	[][]
+13		14		1, 5, 9		130, 131, 132, 133, 134, 135, 136, 137, 138, 139	[11,115][]
+14		15		2, 6, 10	140, 141, 142, 143, 144, 145, 146, 147, 148, 149	[2,21][]
+15		0		3, 7, 11	150, 151, 152, 153, 154, 155, 156, 157, 158, 159	[][]
+
+============
+Nota importantes:
+	Esto es solo un ejemplo, pero la idea es que se vea claro que hay un orden y un camino a seguir por parte de los los nodos para llegar una consulta.
+	Recuerden que el observer debe mostrar una imagen al instante de toda la red con toda su información.
+	[8,11,115] al principio de cada mensaje, lo puse porque los envíos de mensajes de diferentes ciclos se podrían ir en algún caso intercalando, entonces así para poder leer solo un camino sin confundirme con el resto.
+	El Observer tiene prácticamente toda la información al instante, la idea es qu esta sea compacta y ordenada.
+	La base de datos ni el caché tiene la obligación de ser de la forma como se muestra acá, recuerden que eso queda a su libre elección, pero deben indicar en algun parte cuál es el criterio utilizado para las consultas de la base de datos.
+	En este ejemplo la base de datos funciona con rangos.
